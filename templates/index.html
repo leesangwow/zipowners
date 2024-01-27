@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+            <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+            <div>
+                <a href="{{ url_for('cal_salary') }}"><button>연봉으로 계산하기</button></a>
+            </div>
+            <div>
+                <a href="{{ url_for('cal_monthpay') }}"><button>월 상환액으로 계산하기</button></a>
+            </div>
+            <div>
+                <a href="{{ url_for('render_searchapt') }}"><button>금액별 아파트 찾기</button></a>
+            </div>
+    </main>
+</body>
+</html>

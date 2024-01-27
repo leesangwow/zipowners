@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+        <h5></h5>
+        <blockquote>
+            <label>이자 : {{ interests }}%</label>
+            <label>대출기간 : {{ loan_period }}년</label>
+            <label>자금 : {{saving_money}}만원</label>
+        </blockquote>
+        <h5></h5>
+
+        <div class="toggle-container">
+            <div class="toggle-header" onclick="toggleContent()">
+                <span> 조회 결과보기 </span>
+                <span> + </span>
+            </div>
+            <div class="toggle-content", style = "display: none">
+                <h5> </h5>
+                <label>매월 상환 금액 : {{monthpay}}만원 </label>
+                <h5> </h5>
+                <table class="table-container" role="grid">
+                    <tr>
+                        <th colspan="3">원리금 균등</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">대출 가능 금액 : {{wonli_70._result}} 만원</th>
+                    </tr>
+                    <tr>
+                        <td>종류</td>
+                        <td>매매 금액</td>
+                        <td>대출</td>
+                        <td>필요 자본</td>
+                        <td>추가 필요</td>
+                    </tr>
+                    <tr>
+                        <td>생애최초(80%)</td>
+                        <td>{{wonli_80._max_price}}</td>
+                        <td>{{wonli_80._result}}</td>
+                        <td>{{wonli_80._need_money}}</td>
+                        <td>{{wonli_80._more_need_money}}</td>
+                    </tr>
+                    <tr>
+                        <td>일반(70%)</td>
+                        <td>{{wonli_70._max_price}}</td>
+                        <td>{{wonli_70._result}}</td>
+                        <td>{{wonli_70._need_money}}</td>
+                        <td>{{wonli_70._more_need_money}}</td>
+                    </tr>
+                </table>
+                <h5> </h5>
+                <table class="table-container" role="grid">
+                    <tr>
+                        <th colspan="3">원금 균등</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">대출 가능 금액 : {{wonkum_70._result}} 원</th>
+                    </tr>
+                    <tr>
+                        <td>종류</td>
+                        <td>매매 금액</td>
+                        <td>대출</td>
+                        <td>필요 자본</td>
+                        <td>추가 필요</td>
+                    </tr>
+                    <tr>
+                        <td>생애최초(80%)</td>
+                        <td>{{wonkum_80._max_price}}</td>
+                        <td>{{wonkum_80._result}}</td>
+                        <td>{{wonkum_80._need_money}}</td>
+                        <td>{{wonkum_80._more_need_money}}</td>
+                    </tr>
+                    <tr>
+                        <td>일반(70%)</td>
+                        <td>{{wonkum_70._max_price}}</td>
+                        <td>{{wonkum_70._result}}</td>
+                        <td>{{wonkum_70._need_money}}</td>
+                        <td>{{wonkum_70._more_need_money}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button class="submit-button" onclick="submitForm()">Submit</button>
+    </main>
+
+    <script>
+        function toggleContent(elementId) {
+            const toggleContent = document.querySelector('.toggle-content');
+            const toggleSymbol = document.querySelector('.toggle-header span:last-child');
+
+            if (toggleContent.style.display === 'none' || toggleContent.style.display === '') {
+                toggleContent.style.display = 'block';
+                toggleSymbol.textContent = '-';
+            } else {
+                toggleContent.style.display = 'none';
+                toggleSymbol.textContent = '+';
+            }
+        }
+
+        function submitForm() {
+            // 여기에 제출 버튼을 눌렀을 때 실행되는 동작 추가
+            console.log("Form submitted!");
+        }
+    </script>
+</body>
+</html>

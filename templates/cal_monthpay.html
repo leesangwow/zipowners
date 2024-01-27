@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal Monthly Pay</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+        <form action="/cal_monthpay" method ='POST'>
+            <div class="card">
+                <div>
+                    <label for="InputMonthpay">월 이자 상환 희망 금액 (만원)</label>
+                    <input type="text" name="monthpay" placeholder=" ">
+                </div>
+                
+                <div>
+                    <label for="inputInterests">대출 이자율 (%)</label>
+                    <input type="text" name="interests" placeholder=" ">
+                </div>
+                <div>
+                    <label for="inputPeriod">대출 기간 </label>
+                    <select name="loan_period">
+                        <option value="30">30년</option>
+                        <option value="35">35년</option>
+                        <option value="40">40년</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="inputSavingmoney">보유 자금(만원 단위)</label>
+                    <input type="text" name="saving_money" placeholder=" ">
+                </div>
+
+                <label for="submitBtn"></label>
+                <button id="submitBtn">Submit</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

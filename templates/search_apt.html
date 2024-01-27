@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Size & Price Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        .calculator-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        label, select, button, input {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="column">
+            <label for="city">City:</label>
+            <select id="city">
+                <!-- 도시 선택지 추가 -->
+                <option value="Seoul">서울</option>
+                <option value="Busan">부산</option>
+                <option value="Incheon">인천</option>
+                <!-- 추가 가능 -->
+            </select>
+        </div>
+
+        <div class="column">
+            <label for="district">District:</label>
+            <select id="district">
+                <!-- 구 선택지 추가 -->
+                <option value="Gangnam">강남구</option>
+                <option value="Jung">중구</option>
+                <option value="Dongdaemun">동대문구</option>
+                <!-- 추가 가능 -->
+            </select>
+        </div>
+
+        <div class="column">
+            <label for="neighborhood">Neighborhood:</label>
+            <select id="neighborhood">
+                <!-- 동 선택지 추가 -->
+                <option value="Apgujeong">압구정</option>
+                <option value="Myeongdong">명동</option>
+                <option value="Hongdae">홍대</option>
+                <!-- 추가 가능 -->
+            </select>
+        </div>
+
+        <div class="column">
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="10">10평</option>
+                <option value="20">20평</option>
+                <option value="30">30평</option>
+                <option value="40">40평</option>
+                <option value="large">대형</option>
+            </select>
+        </div>
+
+        <div class="column">
+            <label for="priceRange">Price Range:</label>
+            <input type="range" id="priceRange" min="0" max="100" value="50">
+            <span id="priceRangeValue">50</span>
+        </div>
+
+        <button onclick="calculateResult()">Calculate</button>
+
+        <table id="resultTable">
+            <tr>
+                <th>City</th>
+                <th>District</th>
+                <th>Neighborhood</th>
+                <th>Size</th>
+                <th>Price Range</th>
+            </tr>
+            <tr>
+                <td id="cityResult"></td>
+                <td id="districtResult"></td>
+                <td id="neighborhoodResult"></td>
+                <td id="sizeResult"></td>
+                <td id="priceRangeResult"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const priceRangeInput = document.getElementById('priceRange');
+        const priceRangeValue = document.getElementById('priceRangeValue');
+
+        priceRangeInput.addEventListener('input', updatePriceRangeValue);
+
+        function updatePriceRangeValue() {
+            priceRangeValue.textContent = priceRangeInput.value;
+        }
+
+        function calculateResult() {
+            const city = document.getElementById('city').value;
+            const district = document.getElementById('district').value;
+            const neighborhood = document.getElementById('neighborhood').value;
+            const size = document.getElementById('size').value;
+            const priceRange = document.getElementById('priceRange').value;
+
+            // 결과를 표시하는 부분 수정
+            document.getElementById('cityResult').textContent = city;
+            document.getElementById('districtResult').textContent = district;
+            document.getElementById('neighborhoodResult').textContent = neighborhood;
+            document.getElementById('sizeResult').textContent = size + '평';
+            document.getElementById('priceRangeResult').textContent = priceRange;
+        }
+    </script>
+</body>
+</html>
