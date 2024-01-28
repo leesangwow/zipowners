@@ -67,13 +67,14 @@ def cal_salary():
 
         montly_payments = int(salary * float(dsr_ratio) / 100 / 12)
 
-        wonli_70, wonli_80, wonkum_70, wonkum_80 = calculate_loan(salary,interests,loan_period,dsr_ratio,saving_money)
+        wonli_50, wonli_70, wonli_80, wonkum_50,wonkum_70, wonkum_80,now_price_50,now_price_70,now_price_80 = calculate_loan(salary,interests,loan_period,dsr_ratio,saving_money)
     
         return render_template('cal_salary_result.html', 
                             salary = salary, interests= interests, dsr_ratio=dsr_ratio,
                             loan_period=loan_period,saving_money=saving_money,montly_payments=montly_payments,
-                            wonli_70=wonli_70, wonli_80=wonli_80, 
-                            wonkum_70=wonkum_70, wonkum_80=wonkum_80)
+                            wonli_50=wonli_50,wonli_70=wonli_70, wonli_80=wonli_80, 
+                            wonkum_50=wonkum_50,wonkum_70=wonkum_70, wonkum_80=wonkum_80,
+                            now_price_50=now_price_50,now_price_70=now_price_70, now_price_80=now_price_80)
             
 
 @server.route("/cal_monthpay",methods=["POST","GET"])
@@ -87,13 +88,14 @@ def cal_monthpay():
         loan_period = request.form.get('loan_period')
         saving_money = request.form.get('saving_money')
 
-        wonli_70, wonli_80, wonkum_70, wonkum_80 = calculate_monthpay(monthpay,interests,loan_period,saving_money)
-    
+        wonli_50, wonli_70, wonli_80, wonkum_50,wonkum_70, wonkum_80,now_price_50,now_price_70,now_price_80 = calculate_monthpay(monthpay,interests,loan_period,saving_money)
+
         return render_template('cal_monthpay_result.html', 
                             monthpay = monthpay, interests= interests,
                             loan_period=loan_period,saving_money=saving_money,
-                            wonli_70=wonli_70, wonli_80=wonli_80, 
-                            wonkum_70=wonkum_70, wonkum_80=wonkum_80)
+                            wonli_50=wonli_50,wonli_70=wonli_70, wonli_80=wonli_80, 
+                            #wonkum_50=wonkum_50,wonkum_70=wonkum_70, wonkum_80=wonkum_80,
+                            now_price_50=now_price_50,now_price_70=now_price_70, now_price_80=now_price_80)
     
 @server.route("/searh_apt")
 def render_searchapt():
