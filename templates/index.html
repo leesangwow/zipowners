@@ -5,19 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        .icon-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            padding: 20px;
+            font-size: 24px;
+            border-radius: 10px;
+            background-color: #C4DFD7; /* 버튼 배경 색상 */
+            color: #333;
+            text-decoration: none;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .icon-button:hover {
+            background-color: #007B58; /* 마우스 호버 시 배경 색상 */
+            color: #fff;
+        }
+        .icon-button:hover span {
+        color: #fff; /* 마우스 호버 시 span 텍스트 색상 */
+        }
+
+        .icon-text {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+        .container div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .container .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .container .row .column {
+            flex: 0 0 50%; /* 열을 반씩 차지하도록 설정 */
+            box-sizing: border-box; /* 내용 크기를 포함한 전체 크기를 지정 */
+            padding: 10px; /* 컬럼 내부 패딩 추가 */
+        }
+
+        a:link {
+        color : #007B58;
+        }
+        a:visited {
+        color : #007B58;
+        }
+
+    </style>
+
 </head>
 <body>
-    <main class="container">
-            <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
-            <div>
-                <a href="{{ url_for('cal_salary') }}"><button>연봉으로 계산하기</button></a>
+    <main class="container" >
+        <nav>
+            <ul>
+                <li style="color: #007B58; font-weight: bold;"><a href="/">ZIPOWNERS</a></li>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+              {% if session['id'] %}
+                  <li>{{session['id']}} <a href="{{ url_for('logout') }}"> Logout</a></li>  
+              {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>                
+              {% endif %}
+            </ul>
+        </nav>
+        <br>
+        <a class="title" href="/">
+            <img src="static/src/banner2.png" alt="배너 이미지">
+        </a>
+        <div class="row">
+            <div class="column">
+                <a href="{{ url_for('cal_salary') }}" class="icon-button">
+                    <i class="material-icons">attach_money</i>
+                    <span class="icon-text">연봉으로 계산하기</span>
+                </a>
             </div>
-            <div>
-                <a href="{{ url_for('cal_monthpay') }}"><button>월 상환액으로 계산하기</button></a>
+
+            <div class="column">
+                <a href="{{ url_for('cal_monthpay') }}" class="icon-button">
+                    <i class="material-icons">date_range</i>
+                    <span class="icon-text">월 상환액으로 계산하기</span>
+                </a>
             </div>
-            <div>
-                <a href="{{ url_for('render_searchapt') }}"><button>금액별 아파트 찾기</button></a>
+        </div>
+        <div class="row">
+            <div class="column">
+                <a href="{{ url_for('login_confirm') }}" class="icon-button">
+                    <i class="material-icons">home</i>
+                    <span class="icon-text">금액별 아파트 찾기</span>
+                </a>
             </div>
+
+            <div class="column">
+                <a href="https://open.kakao.com/o/gtiQVW7f" class="icon-button">
+                    <i class="material-icons">chat</i>
+                    <span class="icon-text">오픈 채팅방</span>
+                </a>
+            </div>
+        </div>
     </main>
 </body>
 </html>

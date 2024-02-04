@@ -19,7 +19,7 @@ def read_data():
 #Step3. Dash Components
 
 def get_header():
-    header = html.H1("아파트 매수 인사이트", className='mt-4',style={'textAlign':'center'})
+    header = html.H1("금액별 아파트 찾기", className='mt-4',style={'textAlign':'center'})
     return header
 
 def create_search_contents(df):
@@ -57,7 +57,7 @@ def create_search_contents(df):
             html.Div(
                 html.I(
                     "지역 선택(도시/지역구/동)",
-                ),className="card-header",style={"background":"#DFB3A1"}
+                ),className="card-header",style={"background":"#C4DFD7"}
             ),
             html.Div([
                 dbc.Row([
@@ -79,13 +79,13 @@ def create_graph():
             html.Div(
                 html.I(
                     "트렌드 차트",
-                ),className="card-header",style={"background":"#E0B787"}),
+                ),className="card-header",style={"background":"#C4DFD7"}),
 
             html.Div(
                 dcc.Graph(
                     id='graph-content',
                     className='card mb-4'
-                ),className="card-body",style={"background":'#F3F2DC'}
+                ),className="card-body",style={"background":'#C4DFD7'}
             )
         ],className='card mb-4'
     )
@@ -99,7 +99,7 @@ def create_datatable():
             dbc.Container(
                 html.I(
                      "아파트 순위 차트", 
-                ),className='card-header',style={"background":"#E0B787"}),
+                ),className='card-header',style={"background":"#C4DFD7"}),
 
             html.Div(
                 [

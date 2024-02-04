@@ -1,5 +1,5 @@
 # 1. 모듈가져오기
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, render_template, request, redirect, send_file, session,url_for
 from calculation import cal_result, calculate_loan, calculate_monthpay
 import dash
 import dash_html_components as html
@@ -19,6 +19,7 @@ dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 
 # 2. 앱생성(플라스크 객체 생성)
 server = Flask(__name__)
+server.secret_key = 'whataglorylife'
 app_dash = dash.Dash(__name__, server=server, routes_pathname_prefix='/search_apt/',external_stylesheets=[dbc_css])
 #url_base_pathname
 df,df_summary = search_app.read_data()
@@ -101,6 +102,31 @@ def cal_monthpay():
 def render_searchapt():
     return redirect('/search_apt/')
 
+@server.route('/login',methods=["POST","GET"])
+def login():
+    if request.method =='GET':
+        return render_template('login.html')
+    else:
+        id_ = request.form['id_']
+        pw_ = request.form['pw_']
+        if id_ == 'munto' and pw_ == 'munto':
+            session['id']= id_
+            return redirect(url_for('index'))
+        else:
+            return render_template('login.html')
+
+@server.route('/login_confirm', methods=['GET'])
+def login_confirm():
+    if "id" in session:
+        return redirect('/search_apt/')
+    else:
+        return redirect(url_for('login'))
+
+@server.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
 
 ################################################
 @callback(
@@ -108,8 +134,10 @@ def render_searchapt():
     [Input("filter-city",'value')],
 )
 def update_gu(city):
-    return [{"label": gu, "value": gu} for gu in df_summary[df_summary['city']==city].gu.unique()]
-
+    if "id" in session:
+        return [{"label": gu, "value": gu} for gu in df_summary[df_summary['city']==city].gu.unique()]
+    else:
+        return {'label':"Need Login","value":'Need Login'}
 
 @callback(
     Output("filter-dong",'options'),

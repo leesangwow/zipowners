@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toggle Page</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        a:link {
+        color : #007B58;
+        }
+        a:visited {
+        color : #007B58;
+        }
+    </style>
 </head>
 <body>
     <main class="container">
-        <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+        <nav>
+            <ul>
+                <li style="color: #007B58; font-weight: bold;"><a href="/">ZIPOWNERS</a></li>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+              {% if session['id'] %}
+                  <li>{{session['id']}} <a href="{{ url_for('logout') }}"> Logout</a></li>  
+              {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>                
+              {% endif %}
+            </ul>
+        </nav>
+        <h3 style="color: #007B58; font-weight: bold; text-align: center;">연봉으로 계산하기</h3>
         <h5></h5>
         <blockquote>
             <label>연봉 : {{ salary }} 만원</label>
@@ -135,7 +157,7 @@
                         <td>{{now_price_50._more_need_money}}</td>
                     </tr>
                 </table>
-                <button class="submit-button" onclick="location.href='/'"> 다시 조회 하기 </button>
+                <button class="submit-button" onclick="location.href='/'" style="background-color: #007B58;"> 다시 조회 하기 </button>
             </div>
         </div>
     </main>

@@ -5,20 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cal Monthly Pay</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        a:link {
+        color : #007B58;
+        }
+        a:visited {
+        color : #007B58;
+        }
+    </style>
 </head>
 <body>
     <main class="container">
-        <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+        <nav>
+            <ul>
+                <li style="color: #007B58; font-weight: bold;"><a href="/">ZIPOWNERS</a></li>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+              {% if session['id'] %}
+                  <li>{{session['id']}} <a href="{{ url_for('logout') }}"> Logout</a></li>  
+              {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>                
+              {% endif %}
+            </ul>
+        </nav>
+        <h3 style="color: #007B58; font-weight: bold; text-align: center;">월 상환액으로 계산하기</h3>
         <form action="/cal_monthpay" method ='POST'>
             <div class="card">
                 <div>
                     <label for="InputMonthpay">월 이자 상환 희망 금액 (만원)</label>
-                    <input type="text" name="monthpay" placeholder=" ">
+                    <input type="text" name="monthpay" placeholder=" " required>
                 </div>
                 
                 <div>
                     <label for="inputInterests">대출 이자율 (%)</label>
-                    <input type="text" name="interests" placeholder=" ">
+                    <input type="text" name="interests" placeholder=" " required>
                 </div>
                 <div>
                     <label for="inputPeriod">대출 기간 </label>
@@ -30,11 +52,11 @@
                 </div>
                 <div>
                     <label for="inputSavingmoney">보유 자금(만원 단위)</label>
-                    <input type="text" name="saving_money" placeholder=" ">
+                    <input type="text" name="saving_money" placeholder=" " required>
                 </div>
 
                 <label for="submitBtn"></label>
-                <button id="submitBtn">Submit</button>
+                <button id="submitBtn" style="background-color: #007B58;">Submit</button>
             </div>
         </form>
     </main>

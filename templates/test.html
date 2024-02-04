@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .title {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container h1 {
+            margin-bottom: 0;
+        }
+
+        .container div {
+            margin-top: 10px;
+        }
+
+        .container button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container button i {
+            margin-right: 8px;
+        }
+
+        .container button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <br>
+        <a class="title" href="/"><h1>ZIPOWNERS</h1></a>
+        <div>
+            <a href="{{ url_for('cal_salary') }}" class="icon-button">
+                <i class="material-icons">attach_money</i>
+                <span class="icon-text">연봉으로 계산하기</span>
+            </a>
+
+            <a href="{{ url_for('cal_monthpay') }}" class="icon-button">
+                <i class="material-icons">date_range</i>
+                <span class="icon-text">월 상환액으로 계산하기</span>
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('login_confirm') }}" class="icon-button">
+                <i class="material-icons">home</i>
+                <span class="icon-text">금액별 아파트 찾기</span>
+            </a>
+
+            <a href="{{ url_for('your_additional_route') }}" class="icon-button">
+                <i class="material-icons">settings</i>
+                <span class="icon-text">추가 버튼</span>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
