@@ -89,7 +89,41 @@
                 <h5> </h5>
                 <table class="table-container" role="grid">
                     <tr>
-                        <th colspan="3">원금 균등</th>
+                        <th colspan="3">지금 바로 살수 있는 집</th>
+                    </tr>
+                    <tr>
+                        <td>종류</td>
+                        <td>매매 금액</td>
+                        <td>대출</td>
+                        <td>필요 자본</td>
+                        <td>추가 필요</td>
+                    </tr>
+                    <tr>
+                        <td>생애최초(80%)</td>
+                        <td>{{now_price_80._max_price}}</td>
+                        <td>{{now_price_80._result}}</td>
+                        <td>{{now_price_80._need_money}}</td>
+                        <td>{{now_price_80._more_need_money}}</td>
+                    </tr>
+                    <tr>
+                        <td>일반(70%)</td>
+                        <td>{{now_price_70._max_price}}</td>
+                        <td>{{now_price_70._result}}</td>
+                        <td>{{now_price_70._need_money}}</td>
+                        <td>{{now_price_70._more_need_money}}</td>
+                    </tr>
+                    <tr>
+                        <td>규제(50%)</td>
+                        <td>{{now_price_50._max_price}}</td>
+                        <td>{{now_price_50._result}}</td>
+                        <td>{{now_price_50._need_money}}</td>
+                        <td>{{now_price_50._more_need_money}}</td>
+                    </tr>
+                </table>
+                <h5> </h5>
+                <table class="table-container" role="grid">
+                    <tr>
+                        <th colspan="3">원금 균등(참고)</th>
                     </tr>
                     <tr>
                         <th colspan="3">대출 가능 금액 : {{wonkum_70._result}} 원</th>
@@ -121,40 +155,6 @@
                         <td>{{wonkum_50._result}}</td>
                         <td>{{wonkum_50._need_money}}</td>
                         <td>{{wonkum_50._more_need_money}}</td>
-                    </tr>
-                </table>
-                <h5> </h5>
-                <table class="table-container" role="grid">
-                    <tr>
-                        <th colspan="3">지금 바로 살수 있는 집</th>
-                    </tr>
-                    <tr>
-                        <td>종류</td>
-                        <td>매매 금액</td>
-                        <td>대출</td>
-                        <td>필요 자본</td>
-                        <td>추가 필요</td>
-                    </tr>
-                    <tr>
-                        <td>생애최초(80%)</td>
-                        <td>{{now_price_80._max_price}}</td>
-                        <td>{{now_price_80._result}}</td>
-                        <td>{{now_price_80._need_money}}</td>
-                        <td>{{now_price_80._more_need_money}}</td>
-                    </tr>
-                    <tr>
-                        <td>일반(70%)</td>
-                        <td>{{now_price_70._max_price}}</td>
-                        <td>{{now_price_70._result}}</td>
-                        <td>{{now_price_70._need_money}}</td>
-                        <td>{{now_price_70._more_need_money}}</td>
-                    </tr>
-                    <tr>
-                        <td>규제(50%)</td>
-                        <td>{{now_price_50._max_price}}</td>
-                        <td>{{now_price_50._result}}</td>
-                        <td>{{now_price_50._need_money}}</td>
-                        <td>{{now_price_50._more_need_money}}</td>
                     </tr>
                 </table>
                 <button class="submit-button" onclick="location.href='/'" style="background-color: #007B58;"> 다시 조회 하기 </button>
