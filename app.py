@@ -127,6 +127,16 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
+@server.route('/testpage')
+def test():
+        
+        df_smaple = df_summary.head(10)
+        
+        #data_json = df_summary.to_json(orient = 'split', indent = 4, force_ascii=False)
+        data_column = df_summary.columns.tolist()
+        data_sum = df_summary.head(20).values.tolist()
+
+        return render_template('test copy.html', enumerate=enumerate, data_column = data_column, data_sum=data_sum)
 
 ################################################
 @callback(
@@ -174,10 +184,15 @@ def update_datatable(dong,gu,option_3month,city):
 
     filtered_df = df_summary.loc[mask, :]
 
-    columns_select = ['dong','apt','size','latest_price','3mon_avg_price','3mon_deals',
-                   'max_price','max_date','min_price','min_date','1year_deals','최고가대비','최저가대비']
+    columns_select = ['dong','apt','size',
+                      'latest_price','latest_date','3mon_avg_price','3mon_deals',
+                      'latest_price_j','latest_date_j','3mon_avg_price_j','3mon_deals_j','jeon_ratio','jeon_diff',
+                      'max_price','max_date','min_price','min_date','1year_deals','최고가대비','최저가대비']
     
-    columns_kor = ['동','단지명','크기','최근 실거래','3개월 평균가','3개월 거래량','최고가','최고가날짜','최저가','최저가날짜','1년거래량','최고점대비','최저점대비']
+    columns_kor = ['동','단지명','크기',
+                   '최근 매매 실거래','최근 거래 날짜','3개월 평균가','3개월 거래량',
+                   '최근 전세 실거래','최근 전세 거래 날짜','전세 3개월 평균가','전세 3개월 거래량','전세가율','매전차이(갭)',
+                   '최고가','최고가날짜','최저가','최저가날짜','1년거래량','최고점대비','최저점대비']
 
     result_df = filtered_df[columns_select]
     result_df.columns = columns_kor

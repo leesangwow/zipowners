@@ -11,7 +11,7 @@ import pandas as pd
 #Step1. Data Import
 def read_data():
     df_all_data = pd.read_csv('static/data/meme_tot_seoul.csv')
-    df_summary = pd.read_csv('static/data/meme_summary_seoul.csv', encoding='cp949')
+    df_summary = pd.read_csv('static/data/summary_test.csv', encoding='cp949')
     df_all_data = df_all_data.astype({'price':'int64'})
 
     return df_all_data,df_summary
